@@ -98,6 +98,37 @@ function getDivisors3(num,arr=[num],num2=Math.floor(Math.sqrt(num))){
 console.log(getDivisors(3071));
 
 
+function getDivisors4(num,func){
+    
+    return func(num);
+
+}
+
+
+var func = function(num,arr=[num],num2=Math.floor(Math.sqrt(num))){
+    
+    if(num2===1){
+        arr.push(1);
+        arr = arr.sort(function(a,b){return a-b});
+        return arr;
+    }else if(num%num2==0){
+        arr.push(num2)
+        if(num2 != Math.sqrt(num)){
+            arr.push(num/num2);
+            }
+            func(num,arr,num2-1);
+        return arr;
+    }
+    else{
+        func(num,arr,num2-1);
+        return arr;
+    }
+}
+
+console.log(getDivisors4(36,func));
+
+
+
 
 
 
