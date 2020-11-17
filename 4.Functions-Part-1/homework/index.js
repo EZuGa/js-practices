@@ -23,8 +23,18 @@ function getDivisors(num){
 
 try{
     console.log(getDivisors(12));
+}catch(err){
+    console.log(err.message);
+}
+try{
     console.log(getDivisors("Content"));
+}catch(err){
+    console.log(err.message);
+}
+
+try{
     console.log(getDivisors(0));    
 }catch(err){
     console.log(err.message);
 }
+
