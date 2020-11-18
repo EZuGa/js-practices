@@ -128,6 +128,38 @@ var func = function(num,arr=[num],num2=Math.floor(Math.sqrt(num))){
 console.log(getDivisors4(36,func));
 
 
+//DZAAN KAI XERXI:)
+function giorgi(num1,num2=Math.floor(Math.sqrt(num1))){
+
+    if(num2===1){
+        let arr = [1];
+        return arr;
+    }
+    else if(num1%num2===0){
+
+        let arr = giorgi(num1,num2-1);
+        arr.push(num2);
+        if (num2!== Math.floor(Math.sqrt(num1))){
+            arr.push(num1/num2);
+        }
+        return arr;
+    }else if(num2==Math.floor(Math.sqrt(num1))){
+        let arr = giorgi(num1,num2-1);
+        arr.push(num1);
+        arr.sort((a,b)=>a-b);
+        return arr;
+    }
+    else{
+        let arr = giorgi(num1,num2-1);
+        return arr;
+
+    }
+
+}
+
+console.log(giorgi(50));
+
+
 
 
 
