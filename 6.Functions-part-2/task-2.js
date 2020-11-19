@@ -36,7 +36,7 @@ function mix(...func){
 }
 
 let jabaxa = mix(() => {
-    throw new RangeError('Range is wrong');
+    0;
 }, (prev) => {
     return prev + 1;
 }, (prev) => {
