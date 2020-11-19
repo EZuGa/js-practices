@@ -14,8 +14,13 @@ function reverse(arr){
         }else if(arr.length === 0){
             throw Error("Your array mustn't be empty");
         }
+        else{
+            return arr.myReverse();
+        }
+
     }catch(err){
-        console.log(err.message);
+       console.log(err.message);
+  
     }
     // let arrLength = arr.length;
     // for(let i=0;i<Math.floor(arrLength/2);++i){
@@ -24,9 +29,9 @@ function reverse(arr){
     //     arr[arrLength - i - 1] = temp;
     //     console.log(arr)
     // }
-    return arr.myReverse();
+    
 }
 
-
-
 console.log(reverse([1,2,3]));
+
+console.log(reverse("aa"));
