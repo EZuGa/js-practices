@@ -12,9 +12,9 @@ function mix(...func){
 
 
 mix(() => {
-    return 4;
+    return 0;
 }, (prev) => {
-    return prev + 2;
+    return prev + 1;
 }, (prev) => {
-    return prev * 3;
+    return prev * 2;
 }) // 2
