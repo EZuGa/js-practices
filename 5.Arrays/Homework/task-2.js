@@ -20,7 +20,6 @@ function reverse(arr){
 
     }catch(err){
        console.log(err.message);
-  
     }
     // let arrLength = arr.length;
     // for(let i=0;i<Math.floor(arrLength/2);++i){
@@ -32,6 +31,8 @@ function reverse(arr){
     
 }
 
+
+
 console.log(reverse([1,2,3]));
 
-console.log(reverse("aa"));
+console.log(reverse("JABAXA"));

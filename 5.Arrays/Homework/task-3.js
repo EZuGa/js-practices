@@ -1,9 +1,9 @@
-function rotate(arr,num=0,direction = "right"){
+function rotate(arr,num,direction = "right"){
     try{
     if(!Array.isArray(arr)){
         throw Error("First parameter must be an array");
-    }else if(typeof num !== "number"){
-        throw Error("Second parameter must be a number");
+    }else if(typeof num !== "number" || num <1){
+        throw Error("Second parameter must be a number more than 1");
     }else if(typeof direction !== "string"){
         throw Error("Third parameter must be a String");
     }
@@ -30,5 +30,5 @@ function rotate(arr,num=0,direction = "right"){
 
 const arr = [1,2,3];
 
-rotate(arr,1);
+rotate(arr);
 console.log(arr);
