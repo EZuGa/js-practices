@@ -33,6 +33,6 @@ function reverse(arr){
 
 
 
-console.log(reverse([1,2,3]));
+console.log(reverse([1,2,3,4]));
 
 console.log(reverse("JABAXA"));
