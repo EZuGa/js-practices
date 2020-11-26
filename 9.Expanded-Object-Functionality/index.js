@@ -17,7 +17,7 @@ const data = {
             if(obj[keys] instanceof Object && !(obj[keys] instanceof Array)){
                 this.mergeDeepRight(obj[keys],self[keys])
             }else if(obj[keys] instanceof Array){
-                self[keys]=self[keys].concat(obj[keys])
+                self[keys]=obj[keys].concat(self[keys])
             }
             else{
                 self[keys]= obj[keys]
