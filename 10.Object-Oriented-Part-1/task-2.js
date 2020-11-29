@@ -2,6 +2,8 @@ function CoffeeMachine(power, capacity) {
 	var waterAmount = 0;
     var WATER_HEAT_CAPACITY = 4200;
     var isRunning = false;
+    var currentTimeout;
+
 	
     function getTimeToBoil() {
 		return waterAmount * WATER_HEAT_CAPACITY * 80 / power;
@@ -21,16 +23,25 @@ function CoffeeMachine(power, capacity) {
         console.log('Coffee is ready');
         isRunning = false;
     }
+
     
 	this.run = function() {
         isRunning = true;
-		setTimeout(onReady, getTimeToBoil());
+        currentTimeout = setTimeout(onReady, getTimeToBoil());
     };
     this.isRunning = function(){
         return isRunning;
     }
     this.setOnReady = function(migeba){
         onReady = migeba
+        
+        if(isRunning){
+
+            clearTimeout(currentTimeout)
+            this.run()
+            isRunning = false
+        }
+        
     }
     this.getWaterAmount = function(){
         return waterAmount;
@@ -42,10 +53,16 @@ coffeeMachine.setWaterAmount(100);
 
 console.log('Before: ' + coffeeMachine.isRunning()); // Before: false
 
+
 coffeeMachine.run();
 
 console.log('In progress: ' + coffeeMachine.isRunning()); // In progress: true
 
 coffeeMachine.setOnReady(function() {
-	console.log('After: ' + coffeeMachine.isRunning()); // After: false
+	console.log('After: ' + coffeeMachine.isRunning()); // After: false - აქ თრუ უნდა იყოს ხო გაშვებულია
 });
+
+
+
+
+
