@@ -59,7 +59,7 @@ coffeeMachine.run();
 console.log('In progress: ' + coffeeMachine.isRunning()); // In progress: true
 
 coffeeMachine.setOnReady(function() {
-	console.log('After: ' + coffeeMachine.isRunning()); // After: false - აქ თრუ უნდა იყოს ხო გაშვებულია
+	console.log('After: ' + coffeeMachine.isRunning()); // After: false 
 });
 
 
