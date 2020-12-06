@@ -72,6 +72,44 @@ class DB{
         }
         this.users.delete(id)
     }
+
+
+        //obj.age >= query.age.min && obj.age <= query.age.max
+        find(query){
+            if(query.age){
+                console.log("tu age arisebobs")
+                if(!(query.age.min || query.age.max)){
+                    console.log("aee")
+                }
+            }
+
+            // if(!(query.age.min || query.age.max)){
+            //     throw new Error("Min an Max unda ikos")
+            // }
+            // if(!(query.salary.min || query.salary.max)){
+            //     throw new Error("Min an Max unda ikos")
+            // }
+            
+
+            let usersArray = this.readAll()
+            console.log(usersArray)
+    
+            usersArray=usersArray.filter((obj)=>{
+             
+                if((query.name === obj.name || typeof query.name === "undefined") &&
+                   (query.country === obj.country || typeof query.country === "undefined") &&
+                   (typeof query.age === "undefined" || typeof query.age.min === "undefined" || query.age.min<obj.age) &&
+                   (typeof query.age === "undefined" || typeof query.age.max === "undefined" || query.age.max>obj.age) &&
+                   (typeof query.salary === "undefined" || typeof query.salary.min === "undefined" || query.salary.min<obj.salary) &&
+                   (typeof query.salary === "undefined" || typeof query.salary.max === "undefined" || query.salary.max>obj.salary)
+                ){
+                    return obj
+                }
+            })
+            console.log("new")
+            console.log(usersArray)
+        }
+    
 }
 
 let db = new DB()
@@ -82,10 +120,35 @@ const person = {
     country: 'ge', // required field with type string
     salary: 500, // required field with type number
 };
+const jabaxa = {
+    name: 'Jabaxa', // required field with type string
+    age: 50, // required field with type number
+    country: 'ge', // required field with type string
+    salary: 3000, // required field with type number
+};
 
 
 const id = db.create(person);
+const id2 = db.create(jabaxa);
 
 db.update(id, { age: 22 });
 
-console.log(db.readAll())
+
+const query = {
+    country: 'ge',
+    age:{
+        // min:20,
+        // max:100
+    },
+    salary:{
+        min:10,
+        max:11200
+    }
+
+};
+
+const customers = db.find(query); // array of users
+
+console.log(customers)
+
+
