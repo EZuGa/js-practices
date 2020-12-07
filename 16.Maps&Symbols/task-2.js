@@ -74,21 +74,34 @@ class DB{
     }
 
 
-        //obj.age >= query.age.min && obj.age <= query.age.max
         find(query){
             if(query.age){
-                console.log("tu age arisebobs")
                 if(!(query.age.min || query.age.max)){
-                    console.log("aee")
+                    throw new Error("Age: Min or Max should be included.")
                 }
             }
 
-            // if(!(query.age.min || query.age.max)){
-            //     throw new Error("Min an Max unda ikos")
-            // }
-            // if(!(query.salary.min || query.salary.max)){
-            //     throw new Error("Min an Max unda ikos")
-            // }
+            if(query.salary){
+                if(!(query.salary.min || query.salary.max)){
+                    throw new Error("Salary: Min or Max should be included.")
+                }
+            }
+
+            if(typeof query.name !== "string" && typeof query.name !== "undefined" ||
+                typeof query.country !== "string" && typeof query.country !== "undefined"
+            
+            ){
+                throw new Error("Not a String")
+            }
+
+            let queryKeys = Object.keys(query)
+
+            for (let item of queryKeys){
+                console.log(item)
+                if(item !== "name" && item !== "country" && item !== "age" && item !=="salary"){
+                    throw new Error("Query Validation Failed!")
+                }
+            }
             
 
             let usersArray = this.readAll()
@@ -117,7 +130,7 @@ let db = new DB()
 const person = {
     name: 'Pitter', // required field with type string
     age: 21, // required field with type number
-    country: 'ge', // required field with type string
+    country: 'de', // required field with type string
     salary: 500, // required field with type number
 };
 const jabaxa = {
@@ -137,8 +150,8 @@ db.update(id, { age: 22 });
 const query = {
     country: 'ge',
     age:{
-        // min:20,
-        // max:100
+        min:20,
+        max:100
     },
     salary:{
         min:10,
