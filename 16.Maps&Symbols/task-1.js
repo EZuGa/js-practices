@@ -36,6 +36,11 @@ class DB{
         }else if(typeof id !== "symbol"){
             throw new Error("Not a Symbol")
         }
+
+        let user = this.users.get(id)
+        if(typeof user === "undefined"){
+            return null
+        }
         return this.users.get(id);
     }
 
@@ -89,3 +94,5 @@ const id = db.create(person);
 db.update(id, { age: 22 });
 
 console.log(db.readAll())
+
+console.log(db.read(Symbol()))
