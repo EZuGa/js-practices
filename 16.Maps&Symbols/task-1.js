@@ -95,4 +95,4 @@ db.update(id, { age: 22 });
 
 console.log(db.readAll())
 
-console.log(db.read(Symbol()))
+console.log(db.read())

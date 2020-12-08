@@ -139,24 +139,41 @@ const jabaxa = {
     country: 'ge', // required field with type string
     salary: 3000, // required field with type number
 };
+const beru = {
+    name: 'beru', // required field with type string
+    age: 50, // required field with type number
+    country: 'ge', // required field with type string
+    salary: 3000, // required field with type number
+};
+const chito = {
+    name: 'chiot', // required field with type string
+    age: 20, // required field with type number
+    country: 'ge', // required field with type string
+    salary: 3000, // required field with type number
+};
 
 
 const id = db.create(person);
 const id2 = db.create(jabaxa);
+const id3 = db.create(chito);
+const id4 = db.create(beru);
+
+
 
 db.update(id, { age: 22 });
 
 
 const query = {
+    // name:"beru",
     country: 'ge',
-    age:{
-        min:20,
-        max:100
-    },
+    // age:{
+    //     min:20,
+    //     max:100
+    // },
     salary:{
-        min:10,
-        max:11200
-    }
+        min:1000,
+        // max:11200
+    },
 
 };
 
