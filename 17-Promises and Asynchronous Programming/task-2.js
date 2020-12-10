@@ -1,5 +1,5 @@
 const get = require('fetch').fetchUrl;
-const url = 'https://lab.lectrum.io/geo/api/countries?size=2';
+const url = 'https://lab.lectrum.io/geo/api/countries?size=';
 
 
 class Countries{
@@ -11,12 +11,14 @@ class Countries{
         this.url = url;
     }
 
-    send(oneParameter){
+    send(oneParameter=2){
         if(typeof oneParameter !== "number"){
             throw new Error("oneParameter is not a number!")
         }
+        let newUrl = this.url + oneParameter
+        console.log(newUrl)
         return new Promise((resolve,reject)=>{
-            get(this.url, (error, meta, body) => {
+            get(newUrl, (error, meta, body) => {
                 const { data } = JSON.parse(body);
                 let statusCode = meta.status
                 if(meta.status === 200){
@@ -35,11 +37,10 @@ const countries = new Countries(url);
 
 (async() => {
     try {
-        const data = await countries.send(2);
+        const data = await countries.send(4);
         console.log(data); // array of countries
     } catch (error) {
         console.log(error);
     }
 })();
-
 
